@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=UID
+      - PGID=GID
+    volumes:
+      - /home/USER/.config:/config
+      - /home/USER/torrents:/downloads
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
